@@ -77,6 +77,8 @@ exports.getNote = async (req, res) => {
             res.status(404).json({
                 msg: "Note doesn't exist"
             });
+        }else{
+            res.status(200).json(note);
         }
     } catch (error) {
 
