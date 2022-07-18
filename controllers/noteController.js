@@ -24,7 +24,7 @@ exports.getNotes = async (req, res) => {
 
     try {
 
-        const notes = await Note.find();
+        const notes = await Note.find({}).sort({tag: 1});
         res.json(notes);
 
     } catch (error) {
