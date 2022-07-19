@@ -18,6 +18,10 @@ const NoteSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    order:{
+        type: Number,
+        required: true
+    },
 });
 
 module.exports = mongoose.model('Note', NoteSchema);

@@ -24,7 +24,7 @@ exports.getNotes = async (req, res) => {
 
     try {
 
-        const notes = await Note.find({}).sort({tag: 1});
+        const notes = await Note.find({}).sort({order: 1});
         res.json(notes);
 
     } catch (error) {
@@ -40,7 +40,8 @@ exports.updateNote = async (req, res) => {
             title,
             text,
             tag,
-            date
+            date,
+            order,
         } = req.body;
 
         let note = await Note.findById(req.params.id);
@@ -54,6 +55,7 @@ exports.updateNote = async (req, res) => {
         note.tag = tag;
         note.text = text;
         note.date = date;
+        note.order = order;
 
         note = await Note.findOneAndUpdate({
             _id: req.params.id
