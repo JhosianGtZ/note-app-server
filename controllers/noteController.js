@@ -21,10 +21,43 @@ exports.createNote = async (req, res) => {
 }
 
 exports.getNotes = async (req, res) => {
+    
+    try {
+        let sort = {};
+        sort[req.params.sort] = parseInt(req.params.order); 
+        const notes = await Note.find({}).sort(sort);
+        res.json(notes);
+
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}
+
+
+
+
+exports.getNotesDate = async (req, res) => {
 
     try {
 
-        const notes = await Note.find({}).sort({order: 1});
+        const notes = await Note.find({}).sort({date: 1});
+        res.json(notes);
+
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).send('Hubo un error');
+    }
+}
+
+
+exports.getNotesTitle = async (req, res) => {
+
+    try {
+
+        const notes = await Note.find({}).sort({title: 1});
         res.json(notes);
 
     } catch (error) {

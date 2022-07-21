@@ -18,5 +18,5 @@ app.use('/api/notes', require('./routes/note'));
 
 
 app.listen(4000, () => {
-    console.log('SERVER RUNNING');
+    console.log('SERVER RUNNING ON PORT ' + 4000);
 })
